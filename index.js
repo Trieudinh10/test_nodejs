@@ -2,8 +2,13 @@ const express = require('express');
 var app = express();
 var router = require('./Routers/machines.js')
 
-var check = (req, res, next) => {
+var checkAdmin = (req, res, next) => {
+        req.user.role
+        next();
+}
+var checkLogin = (req, res, next) => {
     if(dangnhap){
+        req.user = user
         next();
     }else{
         console.log('Ban chua dang nhap')
@@ -25,7 +30,7 @@ app.get('/', (req, res, next) => {
 })
 
 
-app.use('/line1',check, router);
+app.use('/line1',checkLogin, checkAdmin, router);
 //localhost:8000/line1/
 
 app.listen(8000, () => {
