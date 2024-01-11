@@ -1,19 +1,20 @@
 const express = require('express');
 var app = express();
-var router = require('./Routers/machines.js')
+app.use(express.static("public"));
+var bodyParser = require('body-parser')
+var router = require('./routers/machines.js')
+const configViewEngine = require('./config/viewEngine.js')
 
-var checkAdmin = (req, res, next) => {
-        req.user.role
-        next();
-}
-var checkLogin = (req, res, next) => {
-    if(dangnhap){
-        req.user = user
-        next();
-    }else{
-        console.log('Ban chua dang nhap')
-    }
-}
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+app.post('/login', (req, res, next) => {
+
+})
 
 app.get('/', (req, res, next) => {
     console.log('door');
@@ -30,9 +31,8 @@ app.get('/', (req, res, next) => {
 })
 
 
-app.use('/line1',checkLogin, checkAdmin, router);
-//localhost:8000/line1/
 
 app.listen(8000, () => {
     console.log('Sever conected on port: 8000')
 })
+configViewEngine(app)
