@@ -2,6 +2,6 @@ npm init
 npm install express --save
 npm install socket.io
 npm install nodemon -g ss
-vào package.json thêm     "start": "nodemon index.js" vào scripts
+vào package.json thêm "start": "nodemon index.js" vào scripts
     để khi có thay đổi sửa xoá chương tình thì server sẽ tự chạy lại
 router mục đích nhóm lại các đường dẫn giúp chúng có chung tiền tố để dễ quản ly hơn 

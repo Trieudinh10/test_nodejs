@@ -1,38 +1,34 @@
 const express = require('express');
+const dotenv = require('dotenv');
 var app = express();
 app.use(express.static("public"));
-var bodyParser = require('body-parser')
-var router = require('./routers/machines.js')
-const configViewEngine = require('./config/viewEngine.js')
+var bodyParser = require('body-parser');
+var router = require('./routers/machines.js');
+const configViewEngine = require('./config/viewEngine.js');
+const connection = require('./config/database.js');
 
+//.ENV
+dotenv.config();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
-app.post('/login', (req, res, next) => {
-
-})
-
-app.get('/', (req, res, next) => {
-    console.log('door');
-    next(); // Điều này bị thiếu trong mã gốc của bạn
-}, (req, res, next) => {
-    console.log('door1');
-    next();
-}, (req, res, next) => {
-    console.log('door2');
-    next();
-}, (req, res, next) => {
-    console.log('door3');
-    res.json('abc')
-})
-
-
+app.use(router);
 
 app.listen(8000, () => {
     console.log('Sever conected on port: 8000')
-})
-configViewEngine(app)
+});
+configViewEngine(app);
+
+
+
+//simple query
+connection.query(
+    'SELECT * FROM `table_user`',
+    function (err, results, fields) {
+        console.log(results);
+        console.log(fields);
+    }
+)
