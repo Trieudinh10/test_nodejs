@@ -14,12 +14,14 @@ app.set('view engine', 'ejs');
 app.set("views", "./views");
 app.set('views', path.resolve(__dirname, 'views'))
 
+//config req.body
+app.use(express.json()); //phản hồi ở dạng json
+app.use(express.urlencoded({ extended: true}));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-
-
 
 app.listen(process.env.PORT, () => {
     console.log('Sever conected on port: 8000')

@@ -1,7 +1,7 @@
 const connection = require('../config/database')
 
 const getHomepage = (req, res) => {
-    //simple query
+//simple query
 //     let user = []
 // connection.query(
 //     'SELECT * FROM `table_user`',
@@ -22,7 +22,13 @@ const getAbc = (req, res) => {
     res.send('getAbc thanh cong')
     }
 
+const postCreateuser = (req,res) => {
+    console.log('reqbody',req.body)
+    res.send('create user')
+}
+
 module.exports = {
     getHomepage,
-    getAbc
+    getAbc,
+    postCreateuser
 }
