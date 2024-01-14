@@ -8,14 +8,19 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="/">Home</a>
-        <a href="/create">News</a>
+        <a  href="/">Home</a>
+        <a class="active" href="/create">Create user</a>
       </div>
 
       <div class="form">
-<form action="/newuser" method="POST">,
+<form action="/newuser" method="POST">
     <fieldset>
     <legend> FORM USER</legend>
+
+    <!-- <div class="com_input">
+        <label for="">id</label>
+        <input type="text" name="id">
+        </div> -->
 
     <div class="com_input">
     <label for="">MAIL</label>
@@ -29,7 +34,7 @@
 
     <div class="com_input">
         <label for="">pasword</label>
-        <input type="text" name="pasword">
+        <input type="text" name="password">
     </div>
     <div>
         <button>SAVE</button>

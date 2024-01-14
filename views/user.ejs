@@ -8,36 +8,31 @@
 </head>
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/">Home</a>
+        <a href="/create">Create user</a>
       </div>
-
-      <div class="form">
-<form action="/newuser" method="POST">
-    <fieldset>
-    <legend> FORM USER</legend>
-
-    <div class="com_input">
-    <label for="">MAIL</label>
-    <input type="text" name="email">
-    </div>
-
-    <div class="com_input">
-        <label for="">name</label>
-        <input type="text" name="name">
-    </div>
-
-    <div class="com_input">
-        <label for="">pasword</label>
-        <input type="text" name="pasword">
-    </div>
-    <div>
-        <button>SAVE</button>
-    </div>
-    </fieldset>
-</form>
-      </div>
+<!-- <%= JSON.stringify(listUser) %> -->
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Mail</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+        
+        <% for (let i = 0; i < listUser.length; i++) { %>
+            <tr>
+                <td><%= listUser[i].id %></td>
+                <td><%= listUser[i].mail %></td>
+                <td><%= listUser[i].name %></td>
+                <td><%= listUser[i].password %></td>
+                <td>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </td>
+              </tr>
+        <%} %>
+      </table>
 </body>
 </html>
