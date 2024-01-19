@@ -25,11 +25,11 @@ const getAbc = (req, res) => {
     const postCreateuser = async (req, res) => {
 
         // let id = req.body.id;
-        let mail = req.body.email;
+        let email = req.body.email;
         let name = req.body.name;
         let password = req.body.password;
     
-        console.log('reqbody',  mail, name, password);
+        console.log('reqbody',  email, name, password);
     
         // connection.query(
         //     `INSERT INTO 
@@ -49,7 +49,7 @@ const getAbc = (req, res) => {
 
         let [results, fields] = await connection.query(
             `INSERT INTO 
-            table_user ( mail, name, password) VALUES( ? , ? , ?)`,[ mail, name, password]
+            table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
         );
             console.log('ket qua', results)
             res.send('create success!')
@@ -66,9 +66,16 @@ const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
 
+const getUpdatePage = (req, res) => {
+    const userId = req.params.id;
+    console.log( 'req.params:', req.params,userId )
+    res.render('edit.ejs')
+}
+
 module.exports = {
     getHomepage,
     getAbc,
     postCreateuser,
-    getCreatePage
+    getCreatePage,
+    getUpdatePage
 }

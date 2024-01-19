@@ -23,7 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.listen(process.env.PORT, () => {
+app.use(router);
+
+app.listen(8000, () => {
     console.log('Sever conected on port: 8000')
 });
 // configViewEngine(app);
