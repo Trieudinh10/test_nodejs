@@ -7,29 +7,35 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+    <!-- <%= JSON.stringify(userEdit) %> -->
     <div class="topnav">
         <a  href="/">Home</a>
         <a class="active" href="/create">Create user</a>
       </div>
 
       <div class="form">
-<form action="/newuser" method="POST">
+<form action="/update-user" method="POST">
     <fieldset>
     <legend> Update USER</legend>
 
+    <div class="com_input dnone">
+    <label for="">Id:</label>
+    <input type="text" name="userId" value="<%= userEdit.id %>">
+    </div>
+
     <div class="com_input">
     <label for="">MAIL</label>
-    <input type="text" name="email">
+    <input type="text" name="email" value="<%= userEdit.mail %>">
     </div>
 
     <div class="com_input">
         <label for="">name</label>
-        <input type="text" name="name">
+        <input type="text" name="name" value="<%= userEdit.name %>">
     </div>
 
     <div class="com_input">
         <label for="">pasword</label>
-        <input type="text" name="password">
+        <input type="text" name="password" value="<%= userEdit.password %>">
     </div>
     <div>
         <button>SAVE</button>
