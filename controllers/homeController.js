@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const {getAllUser, getUserById} = require('../service/CRUD')
+const {getAllUser, getUserById,upDateUserById,deleteUserById} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -79,14 +79,24 @@ const postUpdateuser = async (req, res) => {
     let password = req.body.password;
     let userId = req.body.userId;
 
-    console.log('reqbody',  email, name, password, userId);
-    // let [results, fields] = await connection.query(
-    //     `INSERT INTO 
-    //     table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
-    // );
-    //     console.log('ket qua', results)
-        res.send('update success!')
+    await upDateUserById(email, name, password, userId);
+
+    res.redirect('/');
 }
+
+    const postDeleteuser = async(req, res) => {
+        const userId = req.params.id;
+    // console.log( 'req.params:', req.params,userId )
+    let user = await getUserById(userId);
+    res.render('deleteuser.ejs', {userEdit : user});
+    //  res.send('deleteuser');
+    }
+
+    const postRemoveuser = async(req,res) => {
+        const id = req.body.userId
+        await deleteUserById(id)
+        res.redirect('/')
+    }
 
 module.exports = {
     getHomepage,
@@ -94,5 +104,7 @@ module.exports = {
     postCreateuser,
     getCreatePage,
     getUpdatePage,
-    postUpdateuser
+    postUpdateuser,
+    postDeleteuser,
+    postRemoveuser
 }

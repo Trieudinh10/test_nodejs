@@ -29,7 +29,10 @@
                 <td><%= listUser[i].password %></td>
                 <td>
                   <a href="/update/<%= listUser[i].id %>"> Edit</a>
+                  <form action="/delete_user/<%= listUser[i].id %>" method="POST" >
                   <button>Delete</button>
+                </form>
+                  
                 </td>
               </tr>
         <%} %>

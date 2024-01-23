@@ -14,9 +14,9 @@
       </div>
 
       <div class="form">
-<form action="/update-user" method="POST">
+<form action="/delete_user" method="POST">
     <fieldset>
-    <legend> Update USER</legend>
+    <legend> delete USER</legend>
 
     <div class="com_input dnone">
     <label for="">Id:</label>
@@ -28,7 +28,7 @@
     <input type="text" name="email" value="<%= userEdit.email %>">
     </div>
 
-    <div class="com_input">
+    <!-- <div class="com_input">
         <label for="">name</label>
         <input type="text" name="name" value="<%= userEdit.name %>">
     </div>
@@ -36,9 +36,9 @@
     <div class="com_input">
         <label for="">pasword</label>
         <input type="text" name="password" value="<%= userEdit.password %>">
-    </div>
+    </div> -->
     <div>
-        <button>SAVE</button>
+        <button>DELETE</button>
     </div>
     </fieldset>
 </form>
