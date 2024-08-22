@@ -4,7 +4,7 @@ const path = require('path');
 var app = express();
 app.use(express.static("public"));
 var bodyParser = require('body-parser');
-var router = require('./routers/machines.js');
+var router = require('../Routers/machines');
 // const configViewEngine = require('./config/viewEngine.js');
 
 //.ENV

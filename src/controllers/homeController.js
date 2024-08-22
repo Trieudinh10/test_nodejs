@@ -1,5 +1,5 @@
-const connection = require('../config/database')
-const {getAllUser, getUserById,upDateUserById,deleteUserById} = require('../service/CRUD')
+const connection = require('../../config/database')
+const {getAllUser, getUserById,upDateUserById,deleteUserById} = require('../../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -48,7 +48,7 @@ const getAbc = (req, res) => {
         // );
 
         let [results, fields] = await connection.query(
-            `INSERT INTO 
+            `INSERT INTO  
             table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
         );
             console.log('ket qua', results)
