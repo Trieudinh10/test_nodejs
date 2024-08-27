@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-const {getHomepage, getAbc, postCreateuser, getCreatePage, getUpdatePage, postUpdateuser,postDeleteuser,postRemoveuser} = require('../src/controllers/homeController');
+const {getHomepage, getAbc, postCreateuser, getCreatePage, getUpdatePage, postUpdateuser,postDeleteuser,postRemoveuser} = require('../controllers/homeController');
 
 router.get('/', getHomepage);
 
