@@ -16,6 +16,7 @@ const getHomepage = async(req, res) => {
 // );  
 let results = await getAllUser();
   return res.render('user', {listUser: results});
+//   return res.send("hello");
 }
 
 const getAbc = (req, res) => {
@@ -49,7 +50,7 @@ const getAbc = (req, res) => {
 
         let [results, fields] = await connection.query(
             `INSERT INTO  
-            table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
+            users ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
         );
             console.log('ket qua', results)
             res.send('create success!')
