@@ -7,4 +7,4 @@ vào package.json thêm "start": "nodemon index.js" vào scripts
 router mục đích nhóm lại các đường dẫn giúp chúng có chung tiền tố để dễ quản ly hơn 
 
 
-video học tới: 
+video học tới:  #18 Áp Dụng Mô Hình MVC vào Dự Án Node.JS
