@@ -5,6 +5,7 @@ var app = express();
 app.use(express.static("public"));
 var bodyParser = require('body-parser');
 var router = require('../src/Routers/machines');
+var initWebRouters = require('../src/Routers/web');
 // const configViewEngine = require('./config/viewEngine.js');
 
 // Add headers before the routes are defined
@@ -50,3 +51,4 @@ app.listen(8000, () => {
 });
 // configViewEngine(app);
 app.use(router);
+app.use(initWebRouters);
