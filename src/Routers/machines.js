@@ -19,4 +19,8 @@ router.post('/delete_user/:id', postDeleteuser);
 
 router.post('/delete_user/', postRemoveuser);
 
+router.get('/abcd', (req, res) => {
+    return res.send('xin chao')
+})
+
 module.exports = router

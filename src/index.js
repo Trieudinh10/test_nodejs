@@ -5,7 +5,6 @@ var app = express();
 app.use(express.static("public"));
 var bodyParser = require('body-parser');
 var router = require('../src/Routers/machines');
-var initWebRouters = require('../src/Routers/web');
 // const configViewEngine = require('./config/viewEngine.js');
 
 // Add headers before the routes are defined
@@ -40,15 +39,15 @@ app.use(express.json()); //phản hồi ở dạng json
 app.use(express.urlencoded({ extended: true}));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 
 app.use(router);
 
-app.listen(8000, () => {
-    console.log('Sever conected on port: 8000')
+let port = process.env.PORT || 6969
+app.listen(port, () => {
+    console.log('Sever conected on port: ' + port)
 });
 // configViewEngine(app);
 app.use(router);
-app.use(initWebRouters);
