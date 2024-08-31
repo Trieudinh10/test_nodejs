@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +20,10 @@
     "lodash": "^4.17.21",
     "mysql": "^2.18.1",
     "mysql2": "^3.7.0",
-    "node-sessionstorage": "^1.0.0",
     "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4"
   }
 }

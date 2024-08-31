@@ -21,6 +21,7 @@ const getHomepage = async(req, res) => {
 // );  
 let results = await getAllUser();
   return res.render('user', {listUser: results});
+//   return res.send("hello");
 }
 
 const getAbc = (req, res) => {
@@ -54,8 +55,13 @@ const getAbc = (req, res) => {
         const hashedPassword = await bcryptHash(req.body.password, 10);
 
         let [results, fields] = await connection.query(
+<<<<<<< HEAD:controllers/homeController.js
             `INSERT INTO 
             table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, hashedPassword]
+=======
+            `INSERT INTO  
+            users ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
+>>>>>>> d776adac7edf8d77482ce06dde9b203c0b19e15e:src/controllers/homeController.js
         );
             console.log('ket qua', results)
             res.send('create success!')
