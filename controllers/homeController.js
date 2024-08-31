@@ -1,4 +1,9 @@
 const connection = require('../config/database')
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const { promisify } = require("util");
+const bcryptHash = promisify(bcrypt.hash);
+const bcryptCompare = promisify(bcrypt.compare);
 const {getAllUser, getUserById,upDateUserById,deleteUserById} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
@@ -46,10 +51,11 @@ const getAbc = (req, res) => {
         //         }
         //     }
         // );
+        const hashedPassword = await bcryptHash(req.body.password, 10);
 
         let [results, fields] = await connection.query(
             `INSERT INTO 
-            table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, password]
+            table_user ( email, name, password) VALUES( ? , ? , ?)`,[ email, name, hashedPassword]
         );
             console.log('ket qua', results)
             res.send('create success!')

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+  <div class="topnav">
+    <a  href="/">Home</a>
+    <a class="active" href="/create">Create user</a>
+    <a class="active" href="/login">Create user</a>
+    <a class="active" href="/sign-up">Signup</a>
+  </div>
+    <div class="container">
+        <div class="wrapper">
+  
+          <form action="/sign-in" method="post">
+  
+            <div class="signup-link">
+              <a href="/">Scada Xưởng Chế Tạo</a>
+            </div>
+  
+            <div class="row">
+            <i class="fa-regular fa-envelope"></i>
+            <input class="com_unit_login" for="email" type="text" name="email" placeholder="Email..." required />
+            </div>
+            <div class="email error" style="color: red; margin-bottom: 16px;"></div>
+  
+            <div class="row"> 
+            <i class="fas fa-lock"></i>
+            <input class="com_unit_login" for="password" type="password" name="password" placeholder="Password..." required />
+            </div>
+            <div class="password error" style="color: red; margin-bottom: 16px;"></div>
+  
+            <div class="pass"><a href="#">Forgot password?</a></div>
+  
+            <div class="row button">
+            <button id="login_button" class="com_unit_login">Login</button>
+            </div>
+  
+            <div class="signup-link">
+              Don't have an account? <a href="/signup">Signup now</a>
+            </div>
+          </form>
+  
+        </div>
+      </div>
+</body>
+</html>
