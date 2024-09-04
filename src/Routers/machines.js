@@ -23,11 +23,5 @@ router.post('/delete_user/:id', postDeleteuser);
 
 router.post('/delete_user/', postRemoveuser);
 
-<<<<<<< HEAD:Routers/machines.js
-=======
-router.get('/abcd', (req, res) => {
-    return res.send('xin chao')
-})
->>>>>>> d776adac7edf8d77482ce06dde9b203c0b19e15e:src/Routers/machines.js
 
 module.exports = router
