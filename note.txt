@@ -10,4 +10,4 @@ npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10
 
 vào ejs viết giao diện - vào router gọi tên hàm nó - vào homcontroller dùng tên hàm nó để gọi ejs ra 
 
-video học tới:  #22 Phân Tích Cơ Sở Dữ Liệu Dự Án Backend Đặt Lịch Khám Bệnh | Cấu hình cho Node.JS phần 4
+video học tới: #23 Tạo Tất Cả Models, Migrations và Seeders Cho Dự Án Đặt Lịch Khám Bệnh - Phần 1
