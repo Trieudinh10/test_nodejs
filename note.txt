@@ -8,8 +8,11 @@ router mục đích nhóm lại các đường dẫn giúp chúng có chung ti�
 
 npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10 
 
+npx sequelize-cli db:migrate
+
+
 vào ejs viết giao diện - vào router gọi tên hàm nó - vào homcontroller dùng tên hàm nó để gọi ejs ra 
 
-video học tới: #23 Tạo Tất Cả Models, Migrations và Seeders Cho Dự Án Đặt Lịch Khám Bệnh - Phần 1
+video học tới: #20 Tạo tables, thêm dữ liệu database với Sequelize CLI - Cấu hình database cho Node.JS phần 2
 
-#6.1 ORM Structure - Ý nghĩa của Model/Migrations/Seeder | SERIES FULLSTACK - JWT, Node.JS & React
+SERIES FULLSTACK - JWT, Node.JS & React

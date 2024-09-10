@@ -39,6 +39,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 app.use(router);
+
+// test connection
 connectDB();
 
 let port = process.env.PORT || 6969
