@@ -1,4 +1,5 @@
 const connection = require('../config/database')
+const db = require('../models/index')
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { promisify } = require("util");
@@ -19,9 +20,19 @@ const getHomepage = async(req, res) => {
 //         res.send(JSON.stringify(user))
 //     }
 // );  
-let results = await getAllUser();
-  return res.render('user', {listUser: results});
+
+// let results = await getAllUser();
+//   return res.render('user', {listUser: results});
 //   return res.send("hello");
+try {
+    let data =  await db.User.findAll();
+    console.log(data)
+    return res.render('homepage.ejs', {data: JSON.stringify(data)})
+}catch(e) {
+    console.log(e)
+}
+
+
 }
 
 const getAbc = (req, res) => {

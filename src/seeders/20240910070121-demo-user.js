@@ -13,6 +13,8 @@ module.exports = {
      * }], {});
     */
 
+
+    // npx sequelize-cli db:seed:all
     await queryInterface.bulkInsert('Users', [
       {
       email: 'dinhlequangtrieu@gmail.com',

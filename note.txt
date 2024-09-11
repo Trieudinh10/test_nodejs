@@ -8,11 +8,14 @@ router mục đích nhóm lại các đường dẫn giúp chúng có chung ti�
 
 npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10 
 
-npx sequelize-cli db:migrate
+// Mẫu tạo 1 model user và model migration thì chạy lệnh, trường id và trường ...At nó tự tạo:   npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+// Cập nhật bảng mới thì xoá bảng cũ đi, soạn sẵn bảng trong models và migration và chạy lệnh:  npx sequelize-cli db:migrate
+
 
 
 vào ejs viết giao diện - vào router gọi tên hàm nó - vào homcontroller dùng tên hàm nó để gọi ejs ra 
 
-video học tới: #20 Tạo tables, thêm dữ liệu database với Sequelize CLI - Cấu hình database cho Node.JS phần 2
+video học tới: #23 Tạo Tất Cả Models, Migrations và Seeders Cho Dự Án Đặt Lịch Khám Bệnh - Phần 1
 
 SERIES FULLSTACK - JWT, Node.JS & React
