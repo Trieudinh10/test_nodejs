@@ -9,7 +9,6 @@ router mục đích nhóm lại các đường dẫn giúp chúng có chung ti�
 npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10 
 
 // Mẫu tạo 1 model user và model migration thì chạy lệnh, trường id và trường ...At nó tự tạo:   npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
-
 // Cập nhật bảng mới thì xoá bảng cũ đi, soạn sẵn bảng trong models và migration và chạy lệnh:  npx sequelize-cli db:migrate
 
 
