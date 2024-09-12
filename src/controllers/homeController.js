@@ -91,6 +91,15 @@ const getUpdatePage = async(req, res) => {
     res.render('edit.ejs', {userEdit : user})
 }
 
+let getCRUD = (req, res) => {
+    return res.render('crud.ejs');
+}
+
+let postCRUD = (req, res) => {
+    console.log(req.body);
+    return res.send('post crud from server');
+}
+
 const postUpdateuser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.name;
@@ -124,5 +133,7 @@ module.exports = {
     getUpdatePage,
     postUpdateuser,
     postDeleteuser,
-    postRemoveuser
+    postRemoveuser,
+    getCRUD,
+    postCRUD
 }

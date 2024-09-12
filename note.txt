@@ -11,10 +11,16 @@ npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10
 // Mẫu tạo 1 model user và model migration thì chạy lệnh, trường id và trường ...At nó tự tạo:   npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
 // Cập nhật bảng mới thì xoá bảng cũ đi, soạn sẵn bảng trong models và migration và chạy lệnh:  npx sequelize-cli db:migrate
 
+// chay sequelize seeder: npx sequelize-cli db:seed:all
+
 
 
 vào ejs viết giao diện - vào router gọi tên hàm nó - vào homcontroller dùng tên hàm nó để gọi ejs ra 
 
-video học tới: #23 Tạo Tất Cả Models, Migrations và Seeders Cho Dự Án Đặt Lịch Khám Bệnh - Phần 1
+video học tới: #25 CRUD với Node.js và Sequelize - Sử Dụng ORM Để Tạo Dữ Liệu Mới Vào Database (Create) - Phần 1
 
 SERIES FULLSTACK - JWT, Node.JS & React
+
+
+// Vào ejs viết khung - vào router gọi ejs ra rồi liên kết tới homecontroller - vào home controller render hoặc send ra thứ mình muốn
+
