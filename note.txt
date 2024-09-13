@@ -22,5 +22,9 @@ video học tới: #25 CRUD với Node.js và Sequelize - Sử Dụng ORM Để 
 SERIES FULLSTACK - JWT, Node.JS & React
 
 
-// Vào ejs viết khung - vào router gọi ejs ra rồi liên kết tới homecontroller - vào home controller render hoặc send ra thứ mình muốn
+// Lấy data từ lient ghi vào database
+gọi database ra chỗ tệp ghi vào database
+Vào ejs viết khung(khung phải có method đừng dẫn tới method) - vào router gọi ejs ra rồi liên kết tới homecontroller - vào home controller render hoặc send ra thứ mình muốn(gọi ra cái giao diện hoặc gọi ra cái hàm mình muốn thực thi)
+Vào CRUD lấy cái hàm thực thi đó ra để thực hiện việc ghi dữ liệu vào database
+
 

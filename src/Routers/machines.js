@@ -11,6 +11,9 @@ router.get('/create', getCreatePage);
 
 router.get('/update/:id', getUpdatePage);
 
+
+// Tạo đường dẫn đến form /crud
+// và trong form /crud sẽ cho tạo đường dẫn đến /post-crud
 router.get('/crud', getCRUD);
 router.post('/post-crud', postCRUD);
 

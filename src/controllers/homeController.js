@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const { promisify } = require("util");
 const bcryptHash = promisify(bcrypt.hash);
 const bcryptCompare = promisify(bcrypt.compare);
-const {getAllUser, getUserById,upDateUserById,deleteUserById} = require('../service/CRUD')
+const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -21,18 +21,16 @@ const getHomepage = async(req, res) => {
 //     }
 // );  
 
-// let results = await getAllUser();
-//   return res.render('user', {listUser: results});
+let results = await getAllUser();
+  return res.render('user', {listUser: results});
 //   return res.send("hello");
-try {
-    let data =  await db.User.findAll();
-    console.log(data)
-    return res.render('homepage.ejs', {data: JSON.stringify(data)})
-}catch(e) {
-    console.log(e)
-}
-
-
+// try {
+//     let data =  await db.User.findAll();
+//     console.log(data)
+//     return res.render('homepage.ejs', {data: JSON.stringify(data)})
+// }catch(e) {
+//     console.log(e)
+// }
 }
 
 const getAbc = (req, res) => {
@@ -91,15 +89,6 @@ const getUpdatePage = async(req, res) => {
     res.render('edit.ejs', {userEdit : user})
 }
 
-let getCRUD = (req, res) => {
-    return res.render('crud.ejs');
-}
-
-let postCRUD = (req, res) => {
-    console.log(req.body);
-    return res.send('post crud from server');
-}
-
 const postUpdateuser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.name;
@@ -125,6 +114,25 @@ const postUpdateuser = async (req, res) => {
         res.redirect('/')
     }
 
+
+////////////////////////////////////////////////////////////////
+
+// Khi getCRUD được gọi thì thực hiện render ra crud.ejs
+let getCRUD = (req, res) => {
+    return res.render('crud.ejs');
+}
+
+// Khi postCRUD được gọi thì thực hiện thì hàm createNewUser được thực thi với tham số là req.body
+// req.body chứa dữ liệu từ client gửi lên thông qua phương thức POST (dữ liệu này có thể là thông tin người dùng từ một form)
+let postCRUD = async (req, res) => {
+    let mesage = await createNewUser(req.body);
+    console.log(mesage);
+    return res.send('post crud from server');
+}
+
+
+
+
 module.exports = {
     getHomepage,
     getAbc,
@@ -135,5 +143,5 @@ module.exports = {
     postDeleteuser,
     postRemoveuser,
     getCRUD,
-    postCRUD
+    postCRUD,
 }
