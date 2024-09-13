@@ -5,11 +5,11 @@ const salt = bcrypt.genSaltSync(10);
 
 
 
-const getAllUser = async () => {
-    let [results, fields] = await connection.query('SELECT * FROM users');
-    console.log('req.params:', results)
-    return results;
-}
+// const getAllUser = async () => {
+//     let [results, fields] = await connection.query('SELECT * FROM users');
+//     console.log('req.params:', results)
+//     return results;
+// }
 const getUserById = async (userId) => {
     let [results, fields] = await connection.query('SELECT * FROM users where id = ?', [userId]);
     console.log('req.params:', results)
@@ -77,6 +77,21 @@ let hashUserPassword = (password) => {
 }
 
 
+// Khi getAllUser được gọi thì thực hiện lấy tất cả dữ liệu trong db.User và đưa vào biến users
+let getAllUser = () => {
+    // Ý nghĩa là có 1 promise ở đây, chờ đến khi promise chạy xong thì chạy tiếp 
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = db.User.findAll({
+                raw: true,
+            });
+            // console.log('dữ liệu trong biến users', users)
+            resolve(users)
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 
 

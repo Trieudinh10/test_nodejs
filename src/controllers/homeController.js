@@ -21,16 +21,16 @@ const getHomepage = async(req, res) => {
 //     }
 // );  
 
-let results = await getAllUser();
-  return res.render('user', {listUser: results});
-//   return res.send("hello");
-// try {
-//     let data =  await db.User.findAll();
-//     console.log(data)
-//     return res.render('homepage.ejs', {data: JSON.stringify(data)})
-// }catch(e) {
-//     console.log(e)
-// }
+// let results = await getAllUser();
+//   return res.render('user', {listUser: results});
+//   return res.send("hello");s
+try {
+    let data =  await db.User.findAll();
+    console.log(data)
+    return res.render('homepage.ejs', {data: JSON.stringify(data)})
+}catch(e) {
+    console.log(e)
+}
 }
 
 const getAbc = (req, res) => {
@@ -131,6 +131,15 @@ let postCRUD = async (req, res) => {
 }
 
 
+//Khi displayGetCRUD được gọi thì thưc hiện gọi hàm getAllUser thực thi và lấy dữ liệu điền vào biến data
+//, sau đó đưa dữ liệu trong biến data  ra ejs bằng %
+let displayGetCRUD = async (req, res) => {
+    let data = await getAllUser();
+    console.log(data)
+    return res.render('display_crud.ejs',{datatable: data}) // truyền dữ liệu trong biến data ra ngoài tệp ejs
+}
+
+
 
 
 module.exports = {
@@ -144,4 +153,5 @@ module.exports = {
     postRemoveuser,
     getCRUD,
     postCRUD,
+    displayGetCRUD,
 }
