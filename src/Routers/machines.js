@@ -34,7 +34,7 @@ router.post('/post-crud', postCRUD);
 router.get('/get-crud', displayGetCRUD);
 
 router.get('/edit-crud', getEditCRUD);
-router.get('/put-crud', getUpdateCRUD);
+router.post('/put-crud', getUpdateCRUD);
 
 
 

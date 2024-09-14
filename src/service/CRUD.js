@@ -111,6 +111,30 @@ let getUserInfoById = (userId) => {
     })
 }
 
+let updateUserData = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try{
+            let user = await db.User.findOne({
+                where: { id: data.id}
+            })
+            if(user){
+                user.email = data.email;
+                user.password = data.password;
+                user.firstName = data.firstName;
+                user.lastName = data.lastName;
+                user.address = data.address;
+                user.phonenumber = data.phonenumber;
+                await user.save();
+                resolve();
+            }else{
+                resolve();
+            }
+        }catch(e){
+            console.log(e)
+        }
+    })
+}
+
 
 module.exports = {
     getAllUser,
@@ -119,5 +143,6 @@ module.exports = {
     deleteUserById,
     createNewUser,
     hashUserPassword,
-    getUserInfoById
+    getUserInfoById,
+    updateUserData
 }

@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const { promisify } = require("util");
 const bcryptHash = promisify(bcrypt.hash);
 const bcryptCompare = promisify(bcrypt.compare);
-const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser, getUserInfoById} = require('../service/CRUD')
+const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser, getUserInfoById, updateUserData} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -144,7 +144,7 @@ let getEditCRUD = async (req, res) => {
     console.log(userId)
     if(userId){
         let userData = await getUserInfoById(userId)
-        console.log(userData)
+        // console.log(userData)
         return res.render('edit_crud.ejs', {datauser: userData})
     }else{
         return res.send('hello not found')
@@ -154,9 +154,10 @@ let getEditCRUD = async (req, res) => {
 
 
 // Bên ejs ta đặt name là gì thì chỉ cần req.body.name là ra được 
-let getUpdateCRUD =  (req, res) => {
-
-    return res.send('put crud from server');
+let getUpdateCRUD = async  (req, res) => {
+    let data = req.body;
+    await updateUserData(data)
+    return res.send('update success');
 }
 
 
