@@ -36,6 +36,7 @@
           <th>Gender</th>
           <th>Role ID</th>
           <th>Phone Number</th>
+          <th>Actions</th>
         </tr>
 
         <% for(var i=0; i < datatable.length; i++) { %>
@@ -47,6 +48,10 @@
               <td><%= datatable[i].gender %></td>
               <td><%= datatable[i].roleId %></td>
               <td><%= datatable[i].phonenumber %></td>
+              <td>
+                <a href="/edit-crud?id=<%= datatable[i].id %>">Edit</a>
+                <a href="">Delete</a>
+              </td>
             </tr>
          <% } %>
       </table>

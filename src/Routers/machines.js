@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-const {getHomepage, getAbc, postCreateuser, getCreatePage, getUpdatePage, postUpdateuser,postDeleteuser,postRemoveuser, getCRUD, postCRUD, displayGetCRUD} = require('../controllers/homeController');
+const {getHomepage, getAbc, postCreateuser, getCreatePage, getUpdatePage, postUpdateuser,postDeleteuser,postRemoveuser, getCRUD, postCRUD, displayGetCRUD, getEditCRUD, getUpdateCRUD} = require('../controllers/homeController');
 
 router.get('/', getHomepage);
 
@@ -32,6 +32,10 @@ router.post('/post-crud', postCRUD);
 
 //Khi /get-crud được gọi thì displayGetCRUD sẽ được thực thi
 router.get('/get-crud', displayGetCRUD);
+
+router.get('/edit-crud', getEditCRUD);
+router.get('/put-crud', getUpdateCRUD);
+
 
 
 module.exports = router

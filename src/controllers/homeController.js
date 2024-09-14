@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const { promisify } = require("util");
 const bcryptHash = promisify(bcrypt.hash);
 const bcryptCompare = promisify(bcrypt.compare);
-const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser} = require('../service/CRUD')
+const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser, getUserInfoById} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -126,7 +126,7 @@ let getCRUD = (req, res) => {
 // req.body chứa dữ liệu từ client gửi lên thông qua phương thức POST (dữ liệu này có thể là thông tin người dùng từ một form)
 let postCRUD = async (req, res) => {
     let mesage = await createNewUser(req.body);
-    console.log(mesage);
+    // console.log(mesage);
     return res.send('post crud from server');
 }
 
@@ -135,8 +135,28 @@ let postCRUD = async (req, res) => {
 //, sau đó đưa dữ liệu trong biến data  ra ejs bằng %
 let displayGetCRUD = async (req, res) => {
     let data = await getAllUser();
-    console.log(data)
+    // console.log(data)
     return res.render('display_crud.ejs',{datatable: data}) // truyền dữ liệu trong biến data ra ngoài tệp ejs
+}
+
+let getEditCRUD = async (req, res) => {
+    let userId = req.query.id;
+    console.log(userId)
+    if(userId){
+        let userData = await getUserInfoById(userId)
+        console.log(userData)
+        return res.render('edit_crud.ejs', {datauser: userData})
+    }else{
+        return res.send('hello not found')
+    }
+
+}
+
+
+// Bên ejs ta đặt name là gì thì chỉ cần req.body.name là ra được 
+let getUpdateCRUD =  (req, res) => {
+
+    return res.send('put crud from server');
 }
 
 
@@ -154,4 +174,6 @@ module.exports = {
     getCRUD,
     postCRUD,
     displayGetCRUD,
+    getEditCRUD,
+    getUpdateCRUD,
 }
