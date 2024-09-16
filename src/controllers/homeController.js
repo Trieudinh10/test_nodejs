@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const { promisify } = require("util");
 const bcryptHash = promisify(bcrypt.hash);
 const bcryptCompare = promisify(bcrypt.compare);
-const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser, getUserInfoById, updateUserData} = require('../service/CRUD')
+const {getAllUser, getUserById,upDateUserById,deleteUserById, createNewUser, getUserInfoById, updateUserData, getDeleteById, getputDeleteData} = require('../service/CRUD')
 const getHomepage = async(req, res) => {
 //simple query
 //     let user = []
@@ -126,8 +126,8 @@ let getCRUD = (req, res) => {
 // req.body chứa dữ liệu từ client gửi lên thông qua phương thức POST (dữ liệu này có thể là thông tin người dùng từ một form)
 let postCRUD = async (req, res) => {
     let mesage = await createNewUser(req.body);
-    // console.log(mesage);
-    return res.send('post crud from server');
+    console.log(mesage);
+    return res.send('Tạo tài khoản thành công');
 }
 
 
@@ -140,8 +140,8 @@ let displayGetCRUD = async (req, res) => {
 }
 
 let getEditCRUD = async (req, res) => {
-    let userId = req.query.id;
-    console.log(userId)
+    let userId = req.query.id;  //biến id được query từ ejs, phía ejs phải lấy dược giá trị id
+    // console.log('id cho nhiệm vụ sửa', userId)
     if(userId){
         let userData = await getUserInfoById(userId)
         // console.log(userData)
@@ -149,17 +149,32 @@ let getEditCRUD = async (req, res) => {
     }else{
         return res.send('hello not found')
     }
-
 }
 
 
 // Bên ejs ta đặt name là gì thì chỉ cần req.body.name là ra được 
 let getUpdateCRUD = async  (req, res) => {
     let data = req.body;
-    await updateUserData(data)
-    return res.send('update success');
+    let allUsers = await updateUserData(data)
+    return res.render('display_crud.ejs', {datatable: allUsers});
 }
 
+//TÌM ĐỐI TƯỢN VÀ HIỂN THỊ LÊN 
+let getDeleteCRUD = async (req,res) => {
+    let userId = req.query.id;
+    if(userId){
+        let userData = await getDeleteById(userId);
+        console.log('đối tượng được chọn để delete', userData)
+        return res.render('delete_crud.ejs', {datauser: userData})
+    }
+}
+
+//Gọi đối tượng và thực hiện hàm bên dưới 
+let getputDeleteCRUD = async (req,res) => {
+    let data = req.body;
+    let allUsers = await getputDeleteData(data)
+    return res.render('display_crud.ejs', {datatable: allUsers});
+}
 
 
 
@@ -172,9 +187,12 @@ module.exports = {
     postUpdateuser,
     postDeleteuser,
     postRemoveuser,
+
     getCRUD,
     postCRUD,
     displayGetCRUD,
     getEditCRUD,
     getUpdateCRUD,
+    getDeleteCRUD,
+    getputDeleteCRUD
 }

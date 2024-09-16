@@ -22,7 +22,7 @@
             <!-- EDIT
             Tạo form nhập liệu dữ liệu từ client vào 
             với phương thức là POST và hành động của form sẽ gọi đên link /post-crud -->
-            <form action="/put-crud" method="POST">
+            <form action="/putdelete-crud" method="POST">
                 <div class="form-row">
                     <div class="col-12 mt-3">Edit User</div>
                     <div class="form-group col-md-6">
@@ -57,14 +57,14 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputState">Sex</label>
-                        <select id="inputState" class="form-control" value="<%= datauser.gender %>" name="gender">
+                        <select id="inputState" class="form-control" value="<%= datauser.gender %>">
                             <option value="1">Male</option>
                             <option value="0">Female</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputZip">Role</label>
-                        <select name="roleId" class="form-control" name="roleId">
+                        <select name="roleId" class="form-control">
                             <option value="1">Admin</option>
                             <option value="2">Doctor</option>
                             <option value="3">Patient</option>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <input type="text" name="id" value="<%=datauser.id %>">
-                <button  class="btn btn-primary">Update</button>
+                <button  class="btn btn-primary">Delete</button>
         </div>
         </form>
     </div>

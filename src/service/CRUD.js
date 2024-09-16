@@ -93,6 +93,9 @@ let getAllUser = () => {
     })
 }
 
+
+//Tham số userId được tìm ở homecontroller và truyền qua khi getUserInfoById được gọi
+//tìm trong database User 1 nơi có id bằng  userId
 let getUserInfoById = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -111,6 +114,10 @@ let getUserInfoById = (userId) => {
     })
 }
 
+
+//Tham số data được tìm ở homecontroller và truyền qua khi updateUserData được gọi
+//tìm trong database User 1 nơi có id bằng  data.id
+//Thực hiển chỉnh sửa giá trị
 let updateUserData = (data) => {
     return new Promise(async (resolve, reject) => {
         try{
@@ -123,14 +130,58 @@ let updateUserData = (data) => {
                 user.firstName = data.firstName;
                 user.lastName = data.lastName;
                 user.address = data.address;
+                user.gender = data.gender;
+                user.roleId = data.roleId;
                 user.phonenumber = data.phonenumber;
                 await user.save();
-                resolve();
+                let allUsers = await db.User.findAll();
+                resolve(allUsers);
             }else{
                 resolve();
             }
         }catch(e){
             console.log(e)
+        }
+    })
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+//tìm đối tượng 
+let getDeleteById = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: userId },
+                raw: true,
+            })
+            if(user){
+                resolve(user)
+            }else{
+                resolve([])
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+let getputDeleteData = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.destroy({
+                where: { id: data.id },
+                raw: true,
+            })
+            if(user){
+                let allUsers = await db.User.findAll();
+                resolve(allUsers);
+            }else{
+                resolve([])
+            }
+        } catch (e) {
+            reject(e)
         }
     })
 }
@@ -144,5 +195,7 @@ module.exports = {
     createNewUser,
     hashUserPassword,
     getUserInfoById,
-    updateUserData
+    updateUserData,
+    getDeleteById,
+    getputDeleteData
 }

@@ -17,7 +17,7 @@ npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10
 
 vào ejs viết giao diện - vào router gọi tên hàm nó - vào homcontroller dùng tên hàm nó để gọi ejs ra 
 
-video học tới: #25 CRUD với Node.js và Sequelize - Sử Dụng ORM Để Tạo Dữ Liệu Mới Vào Database (Create) - Phần 1
+video học tới: #31 Cài Đặt Tổng Quan Dự Án Frontend React.JS Từ Github
 
 SERIES FULLSTACK - JWT, Node.JS & React
 
