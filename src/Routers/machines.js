@@ -1,6 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
+const {handleLogin} = require('../controllers/userController')
 const {getHomepage, getAbc, postCreateuser, getCreatePage, getUpdatePage, postUpdateuser,postDeleteuser,postRemoveuser, getCRUD, postCRUD, displayGetCRUD, getEditCRUD, getUpdateCRUD, getDeleteCRUD, getputDeleteCRUD} = require('../controllers/homeController');
 
 router.get('/', getHomepage);
@@ -38,6 +39,8 @@ router.post('/put-crud', getUpdateCRUD);
 
 router.get('/delete-crud', getDeleteCRUD);
 router.post('/putdelete-crud', getputDeleteCRUD);
+
+router.post('/api/login', handleLogin);
 
 
 
