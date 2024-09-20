@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors')
 var app = express();
 app.use(express.static("public"));
 var bodyParser = require('body-parser');
@@ -25,6 +26,8 @@ app.use(function (req, res, next) {
 
 //.ENV
 dotenv.config();
+
+app.use(cors({ origin: true}));
 
 app.set('view engine', 'ejs');
 app.set("views", "./views");
